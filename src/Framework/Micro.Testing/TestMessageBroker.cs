@@ -47,7 +47,7 @@ public sealed class TestMessageBroker : IDisposable
             },
             configuration =>
             {
-                configuration.WithQueueName(queue);
+                configuration.WithQueueName(queue).WithAutoDelete();
                 if (!string.IsNullOrWhiteSpace(messageAttribute.Topic))
                 {
                     configuration.WithTopic(messageAttribute.Topic);
@@ -86,9 +86,9 @@ public sealed class TestMessageBroker : IDisposable
 
     public void Dispose()
     {
-        foreach (var queue in _queues)
-        {
-            _bus.Advanced.QueueDelete(new Queue(queue));
-        }
+        // foreach (var queue in _queues)
+        // {
+        //     _bus.Advanced.QueueDelete(new Queue(queue));
+        // }
     }
 }
