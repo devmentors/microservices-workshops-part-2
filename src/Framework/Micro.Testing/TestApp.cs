@@ -23,7 +23,7 @@ public class TestApp<T> : WebApplicationFactory<T> where T : class
     public TestApp(Action<IServiceCollection>? services = null, string environment = "test", string serverUrl = "")
     {
         _authenticator = new TestAuthenticator();
-        
+
         Client = WithWebHostBuilder(builder =>
         {
             if (services is not null)

@@ -23,7 +23,7 @@ public class ReservationsEndpointsTests : IDisposable
     [Fact]
     public async Task post_make_reservation_should_create_reservation_and_return_accepted_status_code()
     {
-      
+     
     }
 
     #region Arrange
