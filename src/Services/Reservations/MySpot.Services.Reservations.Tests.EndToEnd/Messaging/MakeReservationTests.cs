@@ -24,7 +24,19 @@ public class MakeReservationTests : IDisposable
     [Fact]
     public async Task make_reservation_message_should_create_reservation_and_publish_an_event()
     {
-      
+        var user = new User(Guid.NewGuid(), JobTitle.Employee);
+        await _userRepository.AddAsync(user);
+        var date = _clock.Current().AddDays(1);
+        var parkingSpotReservedSubscription = _testMessageBroker.SubscribeAsync<ParkingSpotReserved>();
+        var command = new MakeReservation(user.Id, Guid.NewGuid(), 2, "ABC123", date);
+
+        await _testMessageBroker.MessageBroker.SendAsync(command);
+
+        var parkingSpotReserved = await parkingSpotReservedSubscription;
+        parkingSpotReserved.ShouldNotBeNull();
+        _app.Authenticate(user.Id);
+        var reservations = await _app.Client.GetFromJsonAsync<WeeklyReservationsDto>("reservations/weekly");
+        reservations.ShouldNotBeNull();
     }
 
     #region Arrange
