@@ -23,7 +23,10 @@ public class ReservationsEndpointsTests : IDisposable
     [Fact]
     public async Task post_make_reservation_should_create_reservation_and_return_accepted_status_code()
     {
-     
+        // we need to insert user into DB before we do an API call. Use repository ;)
+        // pass userId into MakeReservation command
+        var date = _clock.Current().AddDays(1);
+
     }
 
     #region Arrange
