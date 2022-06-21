@@ -24,7 +24,7 @@ namespace MySpot.Services.Availability.Infrastructure.DAL.Migrations
 
             modelBuilder.Entity("Micro.Transactions.Inbox.InboxMessage", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("ResourceId")
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
@@ -37,14 +37,14 @@ namespace MySpot.Services.Availability.Infrastructure.DAL.Migrations
                     b.Property<DateTime>("ReceivedAt")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("Id");
+                    b.HasKey("ResourceId");
 
                     b.ToTable("Inbox");
                 });
 
             modelBuilder.Entity("Micro.Transactions.Outbox.OutboxMessage", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("ResourceId")
                         .HasColumnType("text");
 
                     b.Property<string>("Context")
@@ -69,14 +69,14 @@ namespace MySpot.Services.Availability.Infrastructure.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("ResourceId");
 
                     b.ToTable("Outbox");
                 });
 
             modelBuilder.Entity("MySpot.Services.Availability.Core.Entities.Reservation", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("ResourceId")
                         .HasColumnType("uuid");
 
                     b.Property<int>("Capacity")
@@ -88,7 +88,7 @@ namespace MySpot.Services.Availability.Infrastructure.DAL.Migrations
                     b.Property<Guid?>("ResourceId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("Id");
+                    b.HasKey("ResourceId");
 
                     b.HasIndex("ResourceId");
 
@@ -97,7 +97,7 @@ namespace MySpot.Services.Availability.Infrastructure.DAL.Migrations
 
             modelBuilder.Entity("MySpot.Services.Availability.Core.Entities.Resource", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("ResourceId")
                         .HasColumnType("uuid");
 
                     b.Property<int>("Capacity")
@@ -110,7 +110,7 @@ namespace MySpot.Services.Availability.Infrastructure.DAL.Migrations
                     b.Property<int>("Version")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("ResourceId");
 
                     b.ToTable("Resources");
                 });
