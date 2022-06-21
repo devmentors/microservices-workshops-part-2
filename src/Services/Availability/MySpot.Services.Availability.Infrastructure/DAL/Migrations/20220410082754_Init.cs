@@ -70,7 +70,7 @@ namespace MySpot.Services.Availability.Infrastructure.DAL.Migrations
                         name: "FK_Reservations_Resources_ResourceId",
                         column: x => x.ResourceId,
                         principalTable: "Resources",
-                        principalColumn: "ResourceId");
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(

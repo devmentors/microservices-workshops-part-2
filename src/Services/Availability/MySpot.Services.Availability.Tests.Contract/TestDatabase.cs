@@ -1,6 +1,5 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Threading.Tasks;
 using Micro.DAL.Postgres;
 using Micro.Testing;
 using Microsoft.EntityFrameworkCore;
@@ -19,8 +18,6 @@ internal sealed class TestDatabase : IDisposable
         Context = new AvailabilityDbContext(new DbContextOptionsBuilder<AvailabilityDbContext>().UseNpgsql(options.ConnectionString).Options);
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
     }
-    
-    public Task InitAsync() => Context.Database.MigrateAsync();
 
     public void Dispose()
     {

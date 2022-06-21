@@ -59,7 +59,14 @@ public static class Extensions
 
         builder.Services
             .AddHttpClient(builder.Configuration)
-            .AddContextHandler();
+            .AddContextHandler()
+            .AddVaultCertificatesHandler(builder.Configuration);
+        // .AddConsulHandler()
+        // .AddFabioHandler();
+
+        // builder.Services
+        //     .AddMessagingMetricsDecorators()
+        //     .AddMessagingTracingDecorators();
 
         return builder;
     }
