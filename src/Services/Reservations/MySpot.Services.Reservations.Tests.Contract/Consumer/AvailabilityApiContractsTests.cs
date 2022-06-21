@@ -34,7 +34,7 @@ public class AvailabilityApiContractsTests : IDisposable
 
         await _endpointContract.Pact.VerifyAsync(_ => _apiClient.GetResourceAsync(resourceId));
         
-        //await _endpointContract.PublishToPactBrokerAsync("1");
+        await _endpointContract.PublishToPactBrokerAsync("1");
     }
 
     #region Arrange
