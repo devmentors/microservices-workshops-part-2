@@ -12,6 +12,7 @@ using Xunit.Abstractions;
 namespace MySpot.Services.Availability.Tests.Contract.Provider;
 
 [ExcludeFromCodeCoverage]
+[Collection(Const.TestCollection)]
 public class ReservationsConsumerContractsTests : IDisposable
 {
     [Fact]

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Micro.Testing;
@@ -8,6 +8,7 @@ using Xunit.Abstractions;
 namespace MySpot.Services.Availability.Tests.Contract.Provider;
 
 [ExcludeFromCodeCoverage]
+[Collection(Const.TestCollection)]
 public class ParkingSpotsConsumerContractsTests : IDisposable
 {
     [Fact]

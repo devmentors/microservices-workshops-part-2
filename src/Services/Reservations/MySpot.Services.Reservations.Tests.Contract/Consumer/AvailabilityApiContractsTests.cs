@@ -33,6 +33,8 @@ public class AvailabilityApiContractsTests : IDisposable
             .WithJsonBody(new TypeMatcher(dto));
 
         await _endpointContract.Pact.VerifyAsync(_ => _apiClient.GetResourceAsync(resourceId));
+        
+        //await _endpointContract.PublishToPactBrokerAsync("1");
     }
 
     #region Arrange
